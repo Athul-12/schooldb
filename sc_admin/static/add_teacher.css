@@ -1,0 +1,27 @@
+.banner-image .outer-cont {
+    width: 60%;
+    height: 60vh;
+    margin-top: -2%;
+    background-color: white;
+}
+.banner-image .inner-cont {
+    width: 80%;
+    height: 50vh;
+    background-color: rgb(255, 255, 255);
+    margin-left: 9%;
+    margin-top: 4%;
+}
+.banner-image .inner-cont .row {
+    margin-left: 60px;
+    
+}
+.head {
+    margin-top: -38%;
+    position: absolute;
+}
+.row .gender {
+    display: flex;
+}
+.form-check {
+    margin-left: 5px;
+}

@@ -1,0 +1,17 @@
+.navbar .nav-item .logout {
+    margin-left: 400px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 7px;
+    padding-right: 7px;
+}
+.navbar .nav-item  {
+    margin-left: 400px;
+}
+.banner-image .row {
+    width: 85%;
+}
+.head {
+    position: absolute;
+    margin-top: -32%;
+}

@@ -1,0 +1,21 @@
+.out-cont {
+    background-color: rgba(20, 7, 7, 0.815);
+    vertical-align: center;
+    align-items: center;
+    width: 45%;
+    position: absolute;
+    height: 60vh;
+    margin-top: 7%;
+}
+.form-cont {
+    width: 80%;
+    color: white;
+    margin-left: 10%;
+    margin-top: 10%;
+}
+.banner-image .head {
+    margin-top: -470px;
+    color: white;
+    font-weight: 700;
+    font-size: xxx-large;
+}

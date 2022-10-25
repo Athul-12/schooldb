@@ -1,0 +1,9 @@
+table {
+    border: 1px solid black;
+    width: 100%;
+}
+.outer-conte {
+    width: 100%;
+    background-color: white;
+    margin-top: 2%;
+}
