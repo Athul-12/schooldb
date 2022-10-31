@@ -5,9 +5,11 @@ from teacher.models import student
 # Create your views here.
 
 def home(request):
-    
-
-    return render (request,'hom/sc_home.html')
+    if "teacher_id" in request.session:
+        t_session= Teacher.objects.get(id=request.session["teacher_id"])
+        return render (request,'hom/sc_home.html',{'teacher_data':t_session})
+    else:
+        return redirect("teacher:teacher")
 
 def AddTeach(request):
     if request.method == 'POST':
@@ -28,7 +30,8 @@ def AddTeach(request):
     return render (request,'hom/add_teach.html')
 
 def viewstudent(request):
-    return render (request,'hom/view_student.html')
+    studentss = student.objects.all()
+    return render (request,'hom/view_student.html',{'student_lists':studentss})
 
 def ViewTeach(request):
     teachers = Teacher.objects.all()

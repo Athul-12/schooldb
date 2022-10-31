@@ -2,17 +2,18 @@ from sys import dont_write_bytecode
 from django.shortcuts import redirect, render
 from sc_admin.models  import Teacher
 from . models import student
+from . decoration import auth_teacher
 
 # Create your views here.
-
+@auth_teacher
 def home(request):
     teacher = Teacher.objects.get(id = request.session['teacher_id'])
     
     return render (request,'hom/t_home.html',{'teacher_data':teacher})
-
+@auth_teacher
 def profil(request):
     return render (request,'hom/t_profile.html')
-
+@auth_teacher
 def addstudent(request):
     if request.method == 'POST':
         name = request.POST['sname']
@@ -33,14 +34,14 @@ def addstudent(request):
 
         students.save()
     return render (request,'hom/addstudent.html')
-
+@auth_teacher
 def chnge(request):
     msg = ""
     if request.method == 'POST':
         t_old_psw = request.POST['old']
         t_new_psw = request.POST['pass1']
         t_con_psw = request.POST['pass2']
-        teacher = Teacher.objects.filter(id=request.session['teacher_id'])
+        teacher = Teacher.objects.get(id=request.session['teacher_id'])
 
         if teacher.password == t_old_psw :
             if t_new_psw == t_con_psw:
@@ -69,7 +70,7 @@ def teacher(request):
         except:
             msg = 'invalid email or password'
     return render (request,'hom/t_login.html',{'status':msg,})
-
+@auth_teacher
 def viewstudent(request):
     students = student.objects.filter(teacher = request.session['teacher_id'])
     return render (request,'hom/view_student.html',{'student_list':students})
