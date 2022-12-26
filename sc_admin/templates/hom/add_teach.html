@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="{% static 'style.css' %}">
     <link rel="stylesheet" href="{% static 'a_home.css' %}">
     <link rel="stylesheet" href="{% static 'add_teacher.css' %}">
+    <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
     <title>Document</title>
     <style>
         .banner-image {
@@ -54,10 +55,11 @@
                         </div>
                         <div class="col-lg-6">
                             <label for="exampleInputEmail1" class="form-label">Email address</label>
-                            <input type="email" name="tmail" class="form-control" id="exampleInputEmail1"
-                                aria-describedby="emailHelp">
-                            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                            <input type="text" name="tmail" class="form-control" id="email_st"
+                                aria-describedby="emailHelp" >
+                                <span id="messege"></span>
                         </div>
+                        
 
                         <div class="col-lg-8">
                             <label class="form-label">Address</label>
@@ -111,8 +113,40 @@
             </div>
         </div>
     </div>
+    <script>
+        $(document).ready(function(){
+            $.ajaxSetup({
+            headers: {
+              "X-CSRFToken": $('[name=csrfmiddlewaretoken]').val()
+            }
+        })
+            $('#email_st').change(function(){
+                var email = $('#email_st').val()
+                $.ajax({
+                    type:'POST',
+                    url:"{% url 'sc_admin:emailex' %}",
+                    data: {
+                        'email' : email
+                    },
+                    success:function(response){
+                        if (response.status == true)
+                        {
+                            $("#messege").html('email already exist')
+                            $('#messege').css("color","red")
+                        }
+                        else{
+                            $('#messege').html('email available')
+                            $('#messege').css("color","green")
+                        }
+                        console.log(response.status)
+                    }
+                })
+            })
+        })
+    </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 
 </html>

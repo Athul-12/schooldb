@@ -1,0 +1,4 @@
+Watching for file changes with StatReloader
+C:\Users\Hp\Desktop\web project\school\school\settings.py changed, reloading.
+INFO 2022-11-11 16:00:51,249 autoreload Watching for file changes with StatReloader
+INFO 2022-11-11 16:09:58,656 autoreload C:\Users\Hp\Desktop\web project\school\school\settings.py changed, reloading.

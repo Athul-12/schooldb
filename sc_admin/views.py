@@ -1,15 +1,12 @@
 from django.shortcuts import redirect, render
 from . models import Teacher,AdminLogin
 from teacher.models import student
-
+from django.http import JsonResponse
 # Create your views here.
 
 def home(request):
-    if "teacher_id" in request.session:
-        t_session= Teacher.objects.get(id=request.session["teacher_id"])
-        return render (request,'hom/sc_home.html',{'teacher_data':t_session})
-    else:
-        return redirect("teacher:teacher")
+        
+        return render (request,'hom/sc_home.html')
 
 def AddTeach(request):
     if request.method == 'POST':
@@ -30,8 +27,8 @@ def AddTeach(request):
     return render (request,'hom/add_teach.html')
 
 def viewstudent(request):
-    studentss = student.objects.all()
-    return render (request,'hom/view_student.html',{'student_lists':studentss})
+    students = student.objects.all()
+    return render (request,'hom/view_student.html',{'student_list':students})
 
 def ViewTeach(request):
     teachers = Teacher.objects.all()
@@ -47,9 +44,18 @@ def adm(request):
 
         try:
             adminlogin = AdminLogin.objects.get(admin_username = adminusername,admin_password = adminpassword)  
-            return redirect("sc_admin:a_home")
+            return redirect("sc_admin:a_home") 
 
         except:
             msg = 'invalid user name and password'
             return render (request,"hom/a_login.html",{"error_messege" : msg})
     return render (request,'hom/a_login.html')
+
+def email_exist(request):
+    emaile = request.POST['email']
+    emailex = Teacher.objects.filter(email = emaile).exists()
+    return JsonResponse ({'status':emailex})
+
+
+def fnAngularTest(req):
+    return JsonResponse({'data': "abcdef"})

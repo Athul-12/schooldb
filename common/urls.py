@@ -4,6 +4,5 @@ app_name = 'common'
 
 urlpatterns = [
     path('',views.home, name='home'),
-    path('student',views.student, name='student'),
     
 ]

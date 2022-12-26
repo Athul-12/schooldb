@@ -5,8 +5,6 @@ from django.shortcuts import render
 def home(request):
     return render (request,'hom/master.html')
 
-def student(request):
-    return render (request,'hom/s_login.html')
 
 
 

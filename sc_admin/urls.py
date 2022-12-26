@@ -1,3 +1,4 @@
+from unicodedata import name
 from django.urls import path
 from . import views
 app_name="sc_admin"
@@ -7,5 +8,7 @@ urlpatterns = [
     path('view_student/',views.viewstudent, name='viewstudent'),
     path('viewteacher/',views.ViewTeach, name='viewteacher'),
     path('changpass/',views.ChngPas, name='changepas'),
-    path('admin',views.adm, name='adm')
+    path('admin',views.adm, name='adm'),
+    path('emailex',views.email_exist, name='emailex'),
+    path('fnAngularTest', views.fnAngularTest)
 ]

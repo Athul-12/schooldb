@@ -1,0 +1,5 @@
+2022-11-11 14:43:19,304  exeption occured
+Traceback (most recent call last):
+  File "c:\Users\Hp\Desktop\web project\school\student_api\text.py", line 9, in <module>
+    c = a/b
+ZeroDivisionError: division by zero

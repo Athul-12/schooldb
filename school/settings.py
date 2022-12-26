@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-(j=pg_13(ll^vpx@+0v@r#kh%*+ux1-_@b(6tgbus+-!wpfv39
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -40,7 +40,9 @@ INSTALLED_APPS = [
     'common',
     'student',
     'teacher',
-    'sc_admin'
+    'sc_admin',
+    'student_api',
+    'rest_framework'
     
 ]
 
@@ -138,3 +140,40 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# LOGGING = {
+#     'version' : 1,
+#     'disable_existing_loggers' : False,
+#     'handlers':{
+#         'file':{
+#             'level' : 'DEBUG',
+#             'class' : 'logging.FileHandler',
+#             'filename' : BASE_DIR /'logs/debug.log',
+
+#         },
+#         'console' : {
+#             'class' : 'logging.StreamHandler',
+#         },
+#         'infofile' : {
+#             'level' : 'INFO',
+#             'class' : 'logging.FileHandler',
+#             'filename' : BASE_DIR/'logs/info.log',
+#             'formatter' : 'simpleRe',
+#         },  
+#     },  
+#     'loggers' : {
+#         'django' : {
+#             'handlers' : [ 'file', 'console','infofile'],
+#             'level' : 'DEBUG',
+#             'propagate' : True,
+#             'level' : os.getenv('DJANGO_LOG_LEVEL', 'DEBUG'),
+#         },
+#     },
+#     'formatters' : {
+#         'simpleRe' : {
+#             'format' : "{levelname} {asctime} {module} {message}",
+#             'style' : '{',
+#         }
+#     }
+# }
+

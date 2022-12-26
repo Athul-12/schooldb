@@ -56,7 +56,6 @@ def chnge(request):
     return render (request,'hom/changepas.html',{'status':msg})
 
 def teacher(request):
-    msg = ""
     if request.method == 'POST':
 
         teachmail = request.POST['mail']

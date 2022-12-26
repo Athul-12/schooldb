@@ -46,7 +46,7 @@
         <div class="head">
             <h1>View students</h1>
         </div>
-        {% if student_lists %}
+        {% if student_list %}
 
 
         <div class="outer-conte">
@@ -63,7 +63,7 @@
                         <th>profile</th>
                         <th>password</th>
                     </tr>
-                    {% for students in student_lists %}
+                    {% for students in student_list %}
                     <tr>
                         <td>{{forloop.counter}} </td>
                         <td>{{students.s_name | upper}} </td>

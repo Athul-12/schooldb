@@ -1,0 +1,128 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<botdy>
+    <form action="">
+        {% csrf_token %}
+        <label for="">Name</label>
+        <input type="text" id="name"><br><br>
+        <span id="s_name"></span><br><br>
+        <label for="">Email</label>
+        <input type="text" id="email"><br><br>
+        <span id="s_mail"></span><br><br>
+        <label for="">phone</label>
+        <input type="text" id="phone"><br><br>
+        <span id="s_phone"></span><br><br>
+        <label for="">address</label>
+        <input type="text" id="address"><br><br>
+        <span id="s_add"></span><br><br>
+        <label for="">username</label>
+        <input type="text" id="username"><br><br>
+        <span id="s_uname"></span><br><br>
+        <label for="">password</label>
+        <input type="password" id="pass"><br><br>
+        <span id="s_pass"></span><br><br>
+        <input type="radio" id="male" name="gender">
+        <label for="">Male</label>
+        <input type="radio" id="female" name="gender">
+        <label for="">female</label><br><br>
+        <span id="s_gender"></span><br><br>
+
+        <button onclick="return validate()">signup</button>
+
+    </form>
+
+    <script>
+        function validate() {
+            var s_name = document.getElementById("name")
+            var s_email = document.getElementById("email")
+            var s_phone = document.getElementById("phone")
+            var s_add = document.getElementById('address')
+            var s_username = document.getElementById('username')
+            var s_pass = document.getElementById('pass')
+            var s_male = document.getElementById('male')
+            var s_female = document.getElementById('female')
+            var s_error = document.getElementById('s_name')
+            var se_email = document.getElementById('s_mail')
+            var se_phone = document.getElementById('s_phone')
+            var se_add = document.getElementById('s_add')
+            var se_uname = document.getElementById('s_uname')
+            var se_pass = document.getElementById('s_pass')
+            var se_gender = document.getElementById('s_gender')
+            var sname_pattern = /^[a-z A-Z]+$/
+            if (s_name.value == '') {
+                s_error.innerHTML = "please enter your name"
+                s_error.style.color = "red"
+                return false
+            }
+            else {
+                if(s_name.value.match(sname_pattern )== null){
+                    alert('invalid username')
+                    return false
+                }
+                s_error.innerHTML=''
+            }
+            if (s_email.value == '') {
+                se_email.innerHTML = "please enter your email"
+                se_email.style.color = "red"
+                return false
+            }
+            else {
+                se_email.innerHTML=''
+            }
+            if (s_phone.value == '') {
+                se_phone.innerHTML = "please enter your phone"
+                se_phone.style.color = "red"
+                return false
+            }
+            else {
+                se_phone.innerHTML=''
+            }
+            if (s_add.value == '') {
+                se_add.innerHTML = "please enter your address"
+                se_add.style.color = "red"
+                return false
+            }
+            else {
+                se_add.innerHTML=''
+            }
+            if (s_username.value == '') {
+                se_uname.innerHTML = "please enter your uname"
+                se_uname.style.color = "red"
+                return false
+            }
+            else {
+                se_uname.innerHTML=''
+            }
+            if (s_pass.value == '') {
+                se_pass.innerHTML = "please enter your pass"
+                se_pass.style.color = "red"
+                return false
+            }
+            else {
+                se_pass.innerHTML=''
+            }
+            if(s_male.checked == false && s_female.checked == false)
+            {
+                se_gender.innerHTML='select gender'
+                se_gender.style.color='red'
+                return false
+            }
+            else {
+                se_gender.innerHTML=''
+            }
+            
+        }
+    </script>
+
+    </body>
+
+</html>
